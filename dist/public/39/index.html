@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -27,7 +27,7 @@
     <title>Piggy Gold</title>
     <script src="https://cdn.socket.io/4.3.1/socket.io.min.js"></script>
 <script>
-    const host_name = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port;
+    const host_name = window.location.origin || (window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port : ""));
     const socket = io(host_name, { "transports": ['websocket'] });
 
     const params = new URLSearchParams(window.location.search);
