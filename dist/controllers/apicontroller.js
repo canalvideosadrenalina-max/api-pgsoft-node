@@ -25,7 +25,14 @@ function publicApiBaseUrl() {
 }
 function buildLaunchUrl(codegame, token) {
     const base = publicApiBaseUrl();
-    return `${base}/${codegame}/index.html?operator_token=Zm9saWFiZXQ=&btt=1&t=${token}&or=${base}&api=${base}`;
+    const q = new URLSearchParams({
+        operator_token: "Zm9saWFiZXQ=",
+        btt: "1",
+        t: token,
+        or: base,
+        api: base,
+    });
+    return `${base}/${codegame}/index.html?${q.toString()}`;
 }
 exports.default = {
     launchgame(req, res) {
