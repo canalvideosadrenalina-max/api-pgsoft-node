@@ -68,7 +68,7 @@ require("dotenv/config");
 const app = (0, express_1.default)();
 const httpServer = http_1.default.createServer(app);
 const io = new socket_io_1.Server(httpServer, {
-    transports: ["websocket"],
+    transports: ["polling", "websocket"],
     cors: cors_config_1.socketIoCors,
 });
 console.log(figlet.textSync("API PHILLYPS"), "\n");

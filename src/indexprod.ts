@@ -25,7 +25,7 @@ import "dotenv/config"
 const app = express()
 const httpServer = http.createServer(app)
 const io = new Server(httpServer, {
-   transports: ["websocket"],
+   transports: ["polling", "websocket"],
    cors: socketIoCors,
 });
 
