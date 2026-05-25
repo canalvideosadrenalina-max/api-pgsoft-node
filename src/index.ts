@@ -12,6 +12,7 @@ import compression from "compression"
 import { Server, Socket } from "socket.io"
 import allfunctions from "./functions/allfunctions"
 import { emitirEventoInterno, adicionarListener } from "./serverEvents"
+import { corsOptions, socketIoCors } from "./cors-config"
 
 import "dotenv/config"
 
@@ -24,12 +25,9 @@ import "dotenv/config"
 const app = express()
 const httpServer = http.createServer(app)
 const io = new Server(httpServer, {
-   transports: ['websocket'],
-   cors: {
-     origin: "*", // Permitir qualquer origem, ajuste conforme necessário
-     methods: ["GET", "POST"]
-   }
- });
+   transports: ["websocket"],
+   cors: socketIoCors,
+});
 
 console.log(figlet.textSync("API PHILLYPS"), "\n")
 logger.info('DOMINIO CONECTADO: ' + process.env.DOMINIO_API)
@@ -133,7 +131,7 @@ app.use((req: Request, res: Response, next) => {
    next()
 })
 
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use("/", express.static(path.join(__dirname, "public")))
