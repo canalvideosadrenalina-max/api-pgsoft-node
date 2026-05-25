@@ -27,8 +27,7 @@ export default {
             const jsoninicial = await allfunctions.getjsonprimary(gamename);
                 if (jsonprimay.length === 0) {
                     await allfunctions.createOrUpdateSpin(user[0].id, gamename, jsoninicial[0].json);
-                }
-                if (jsonprimay[0].game_code === gamename){
+                } else if (jsonprimay[0].game_code === gamename){
                     logger.info('[+] Json Recuperado Do Ultimo Spin.')
                 } else {
                     await allfunctions.createOrUpdateSpin(user[0].id, gamename, jsoninicial[0].json);
@@ -53,6 +52,10 @@ export default {
          })
       } catch (error) {
          logger.error(error)
+         res.status(500).send({
+            dt: null,
+            err: { cd: "500", msg: "Internal error", tid: "FTIGER" },
+         })
       }
    },
    async spin(req: Request, res: Response) {
