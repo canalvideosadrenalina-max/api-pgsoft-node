@@ -75,6 +75,7 @@ console.log(figlet.textSync("API PHILLYPS"), "\n");
 index_1.default.info('DOMINIO CONECTADO: ' + process.env.DOMINIO_API);
 const users = new Map();
 io.on("connection", (socket) => __awaiter(void 0, void 0, void 0, function* () {
+    io.setMaxListeners(50);
     console.log("Usuário Conectado", socket.id);
     socket.on("join", (socket1) => __awaiter(void 0, void 0, void 0, function* () {
         const token = socket1.token;
@@ -95,6 +96,8 @@ io.on("connection", (socket) => __awaiter(void 0, void 0, void 0, function* () {
             });
         }, 10000);
     }));
+    io.removeAllListeners("attganho");
+    io.removeAllListeners("att");
     (0, serverEvents_1.adicionarListener)("attganho", (dados) => __awaiter(void 0, void 0, void 0, function* () {
         users.forEach((valor, chave) => __awaiter(void 0, void 0, void 0, function* () {
             let newvalue = parseFloat(users.get(socket.id).aw) + dados.aw;

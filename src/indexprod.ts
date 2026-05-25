@@ -44,6 +44,7 @@ declare module "express-serve-static-core" {
 const users = new Map<string, any>()
 
 io.on("connection", async (socket: Socket) => {
+   io.setMaxListeners(50);
    console.log("Usuário Conectado", socket.id);
 
    socket.on("join", async (socket1) => {
@@ -68,6 +69,9 @@ io.on("connection", async (socket: Socket) => {
          }
       }, 10000)
    })
+
+   io.removeAllListeners("attganho");
+   io.removeAllListeners("att");
 
    adicionarListener("attganho", async (dados) => {
       users.forEach(async (valor, chave) => {
