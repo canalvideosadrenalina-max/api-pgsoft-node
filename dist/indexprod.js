@@ -161,7 +161,11 @@ app.use(helmet_1.default.contentSecurityPolicy({
         "default-src": ["'none'"],
         "base-uri": ["'self'"],
         "font-src": ["'self'", "https:", "data:"],
-        "frame-ancestors": ["'self'"],
+        "frame-ancestors": [
+            "'self'",
+            "https://aavip55.vercel.app",
+            "http://localhost:3000",
+        ],
         "img-src": ["'self'", "data:"],
         "object-src": ["'none'"],
         "script-src": ["'self'", "https://cdnjs.cloudflare.com"],
