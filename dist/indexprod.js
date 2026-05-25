@@ -152,6 +152,7 @@ app.use((req, res, next) => {
     next();
 });
 app.use((0, cors_1.default)(cors_config_1.corsOptions));
+app.options("*", (0, cors_1.default)(cors_config_1.corsOptions));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use("/", express_1.default.static(path_1.default.join(__dirname, "public")));
