@@ -5,7 +5,7 @@
    "license": "MIT",
    "scripts": {
       "dev": "ts-node-dev --respawn --transpile-only src/indexprod.ts",
-      "build": "./node_modules/.bin/tsc",
+      "build": "echo 'using prebuilt dist'",
       "start": "node dist/indexprod.js"
    },
    "dependencies": {
